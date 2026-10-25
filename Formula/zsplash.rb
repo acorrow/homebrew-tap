@@ -1,8 +1,8 @@
 class Zsplash < Formula
   desc "Reactive CLI utility for colorful Zsh and terminal text"
   homepage "https://github.com/acorrow/zsplash"
-  url "https://github.com/acorrow/zsplash/archive/refs/tags/v0.6.5.tar.gz"
-  sha256 "d447df8aa05c73831a2d484d9806c38ea2ebea0503e74e0c6fa88259bad2fdb4"
+  url "https://github.com/acorrow/zsplash/archive/refs/tags/v0.6.6.tar.gz"
+  sha256 "47fb41c43634928779d1e0157e275efdc3f5b862437e9449fbe2b8f305784bf3"
   license "MIT"
   head "https://github.com/acorrow/zsplash.git", branch: "main"
 

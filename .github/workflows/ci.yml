@@ -8,12 +8,15 @@ on:
       - ".github/workflows/**"
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   brew-audit-and-test:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Link tap into Homebrew
         run: |
