@@ -1,0 +1,32 @@
+name: Tap CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Formula/**"
+      - ".github/workflows/**"
+  pull_request:
+
+jobs:
+  brew-audit-and-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link tap into Homebrew
+        run: |
+          TAP_DIR="$(brew --repository)/Library/Taps/acorrow"
+          mkdir -p "$TAP_DIR"
+          rm -rf "$TAP_DIR/homebrew-tap"
+          ln -s "$GITHUB_WORKSPACE" "$TAP_DIR/homebrew-tap"
+
+      - name: Audit formula
+        run: brew audit --strict --online acorrow/tap/zsplash
+
+      - name: Build and install from source
+        run: brew install --build-from-source acorrow/tap/zsplash
+
+      - name: Test formula
+        run: brew test acorrow/tap/zsplash
