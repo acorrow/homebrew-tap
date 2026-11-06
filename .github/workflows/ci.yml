@@ -24,6 +24,7 @@ jobs:
           mkdir -p "$TAP_DIR"
           rm -rf "$TAP_DIR/homebrew-tap"
           ln -s "$GITHUB_WORKSPACE" "$TAP_DIR/homebrew-tap"
+          brew trust acorrow/tap || true
 
       - name: Audit formula
         run: brew audit --strict --online acorrow/tap/zsplash
